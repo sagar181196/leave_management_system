@@ -1,0 +1,31 @@
+{% extends './base.html' %}
+{%block content%}
+<form action='add_employee' method='post'>
+  {% csrf_token %}
+    <div class="input-group mb-3 row">
+      <span class="input-group-text col-sm-2 col-form-label">User Name</span>
+      <input name="user_name" required= true placeholder="User Name" type="text" id="example" class="form-control">
+    </div>
+    <div class="input-group mb-3 row">
+        <span class="input-group-text col-sm-2 col-form-label">Full Name</span>
+        <input name="first_name" required= true placeholder="Full Name" type="text" id="example" class="form-control">
+    </div>
+    <div class="input-group mb-3 row">
+        <span class="input-group-text col-sm-2 col-form-label">DOB</span>
+        <input name="DOB" required= true placeholder="Select date" type="date" id="example" class="form-control">
+    </div>
+    <div class="input-group mb-3 row">
+      <span class="input-group-text col-sm-2 col-form-label">Email</span>
+      <input name="Email" required= true placeholder="email@abc.com" type="email" id="example" class="form-control">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <script>
+  function othername() {
+    var input = document.getElementById("userInput").value;
+    alert(input);
+}
+</script>
+
+{%endblock%}

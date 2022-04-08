@@ -1,0 +1,23 @@
+{% extends './base.html' %}
+{%block content%}
+{% if user.is_superuser %}
+<a href="paid_holiday"><button class="btn btn-primary float-end">Add Paid Holiday</button></a>
+{% endif %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Holiday</th>
+        <th scope="col">Date</th> 
+      </tr>
+    </thead>
+    <tbody>
+        {%for holiday in holidays%}
+      <tr>
+        <th scope="row"><h5>{{holiday.holiday}}</h5></th>
+        <td>{{holiday.date}}</td>
+      </tr>
+      {%endfor%}
+      </tr>
+    </tbody>
+  </table>
+{%endblock%}

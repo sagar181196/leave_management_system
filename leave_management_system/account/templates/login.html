@@ -10,13 +10,13 @@ body {
 
 .main-head{
     height: 150px;
-    background: #FFF;
+    background:  #081D45;
    
 }
 
 .sidenav {
     height: 100%;
-    background-color: #000;
+    background-color:  #081D45;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -88,16 +88,17 @@ body {
       <div class="main">
          <div class="col-md-6 col-sm-12">
             <div class="login-form">
-               <form>
+               <form action='/login' method="POST">
+                {% csrf_token %}
                   <div class="form-group">
-                     <label>User Name</label>
-                     <input type="text" class="form-control" placeholder="User Name">
+                     <label >User Name</label>
+                     <input name='user_name' type="text" class="form-control" placeholder="User Name" required=True>
                   </div>
                   <div class="form-group">
                      <label>Password</label>
-                     <input type="password" class="form-control" placeholder="Password">
+                     <input name='password' type="password" class="form-control" placeholder="Password" required=True>
                   </div><br>
-                  <button type="submit" class="btn btn-black">Login</button>
+                  <button  type="submit" class="btn btn-black" >Login</button>
                   <button type="submit" class="btn btn-secondary">Register</button>
                </form>
             </div>

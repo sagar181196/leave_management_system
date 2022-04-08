@@ -15,11 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from leave_management_system.account.views import account_dashboard, account_view
+from leave_management_system.account.views import account_leave_approval,account_dashboard,account_add_employee,account_leave,account_add_leave,account_holiday,account_paid_holiday,account_login,logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include("account.urls")),
-    path('', account_view ),
     path('dashboard', account_dashboard),
+    path('add_employee',account_add_employee),
+    path('leave',account_leave),
+    path('add_leave',account_add_leave),
+    path('holiday',account_holiday),
+    path('paid_holiday',account_paid_holiday),
+    path('login',account_login),
+    path('logout',logout_view),
+    path('approve-leave',account_leave_approval),
+    
 ]

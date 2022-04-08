@@ -1,0 +1,17 @@
+{% extends './base.html' %}
+{%block content%}
+
+<form action='paid_holiday' method='post'>
+    {% csrf_token %}
+    <div class="input-group mb-3 row">
+        <span class="input-group-text col-sm-2 col-form-label">Holiday</span>
+        <input name='holiday' required= true placeholder="Holiday" type="text" id="example" class="form-control">
+    </div>
+    <div class="input-group mb-3 row">
+        <span class="input-group-text col-sm-2 col-form-label">Date</span>
+        <input name='date' required= true placeholder="Select date" type="date" id="example" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{%endblock%}

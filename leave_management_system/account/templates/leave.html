@@ -1,0 +1,73 @@
+{% extends './base.html' %}
+{%block content%}
+<a href="add_leave"><button class="btn btn-primary float-end">Apply Leave</button></a>
+
+<p id="message"></p>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">UserName</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Reason</th>
+        <th scope="col">leave</th> 
+      </tr>
+    </thead>
+    <tbody>
+        {%for leave in leaves%}
+      <tr>
+        <th scope="row"><h5>{{leave.user.username}}</h5></th>
+        <td>{{leave.date_from}}</td>
+        <td>{{leave.date_to}}</td>
+        <td>{{leave.reason}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-danger"><a  id="accept_leave{{leave.id}}" class="accept_leave" data-leaveid="{{ leave.id }}">Accept</a></button>
+          {% comment %} <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">Approve</button>  {% endcomment %}
+          <button type="button" class="btn btn-outline-danger">Decline</button>
+          </td>
+      </tr>
+      {%endfor%}
+      </tr>
+    </tbody>
+  </table>
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+    
+        <div class="modal-header">
+          <h4 class="modal-title">Want To Approve</h4>
+        </div> 
+        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    $('.accept_leave').click(function(){
+      var leaveid;
+      leaveid = $(this).attr("data-leaveid");
+      $.ajax(
+      {
+          type:"GET",
+          url: "/approve-leave",
+          data:{
+              leave_id: leaveid
+          },
+          success: function( data ) 
+          {
+              $( '#message' ).text('Approved Successfully.');
+          },
+          error:function(data){
+            $( '#message' ).text('Error');
+          }
+      }) 
+});
+</script>
+  
+  {%endblock%}

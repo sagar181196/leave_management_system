@@ -1,0 +1,30 @@
+{% extends './base.html' %}
+{%block content%}
+<form action='add_leave' method='post'>
+    {% csrf_token %}
+
+    <div class="input-group mb-3 row">
+        <span class="input-group-text col-sm-2 col-form-label">From Date</span>
+        <input name='from_Date' required= true placeholder="Select date" type="date" id="example" class="form-control">
+    </div>
+    <div class="input-group mb-3 row">
+        <span class="input-group-text col-sm-2 col-form-label">To Date</span>
+        <input name='to_Date' required= true placeholder="Select date" type="date" id="example" class="form-control">
+    </div>
+    <div class="input-group mb-3 row">
+        <span class="input-group-text col-sm-2 col-form-label">Reason</span>
+        <input name="reason" required= true placeholder="Reason" type="text" id="example" class="form-control">
+    </div>
+    <div class="input-group mb-3 row">
+        <span class="input-group-text col-sm-2 col-form-label">Leave</span>
+        <select  name='leave' class="form-select" aria-label="Default select example">
+            <option selected>Select type</option>
+            <option value="1">Casual Leave</option>
+            <option value="2">Paid Leave</option>
+          </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script type="text/javascript">
+{%endblock%}
